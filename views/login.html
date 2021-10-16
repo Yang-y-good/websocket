@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="js/login.js">
+</head>
+
+<body>
+    <!-- 账号密码表单提交 -->
+    <!-- <form method="POST" action="http://localhost:3000/login"> -->
+    <div class="model">
+
+        <div class="login-body">
+            <div>{{users}}</div>
+            <div>
+                <label for="username">账号:</label>
+                <input class="username" type="text" name="username" required="true" value="{{username}}">
+            </div>
+            <!-- <div>
+                    <label for="username">密码:</label>
+                    <input class="username" type="password" name="password" required="true" value="{{password}}">
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="checked" {{checked}}> Remember me
+                        </label>
+                    </div>
+                </div> -->
+            <div>
+                <button type="submit" id="loginBtn">Sign in</button>
+            </div>
+
+        </div>
+        <!-- </form> -->
+
+</body>
+<!-- 导入socket客户端 -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="./js/login.js"></script>
+
+</html>

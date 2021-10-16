@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="css/base.css"> -->
+    <link rel="stylesheet" href="css/index.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="header">
+      <div class="person_list">
+        在线人员列表:
+        <span class="list"></span>
+      </div>
+      <div class="head">欢迎您，
+        <span class="username"></span>
+        <span class="loginOut">退出登录</span></div>
+
+        <div class="container">
+          <span class="widget-caption">聊天室</span>
+    
+          <a style="font-size: 12px;">当前在线人数 :
+            <span class="count">1</span>
+          </a>
+          <span class="inputChange"> </span>
+        </div>
+      </div>
+      <div class="main">
+        <ul id="messages">
+    
+        </ul>
+      </div>
+      <div class="footer">
+        <input required name="text" class="mesbox" type="text" />
+        <input class="btn-blue" type="button" value="发送" />
+      </div>
+      <div class="bottom">
+
+      </div>
+    
+
+    <!-- 导入socket客户端 -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
