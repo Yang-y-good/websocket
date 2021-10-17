@@ -2,7 +2,7 @@
 ## 安装
 
 ```shell
-$ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git
+$ git clone git@github.com:Yang-y-good/websocket.git
 $ npm install
 ```
 
@@ -12,7 +12,7 @@ $ npm install
 $ node app.js
 ```
 
-服务器启动默认端口为 3000,若不想使用 3000 端口,可使用以下命令: Mac/Linux
+服务器启动默认端口为 8088,若不想使用 3000 端口,可使用以下命令: Mac/Linux
 
 ```shell
 $ PORT=4000 node app.js
