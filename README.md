@@ -6,7 +6,7 @@
 2. 添加对昵称的支持。
 3. 添加“{user} 正在输入”功能。
 4. 显示谁在线。
-
+![https://dss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/44811898_1797986727_259_194.jpg]()
 ## 安装
 
 ```shell
