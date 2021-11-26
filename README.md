@@ -7,7 +7,7 @@
 3. 添加“{user} 正在输入”功能。
 4. 显示谁在线。
 
-![](https://resoure-1252202390.cos.ap-nanjing.myqcloud.com/websocket1.png)
+![](https://resoure-1252202390.cos.ap-nanjing.myqcloud.com/websocket3.png)
 
 ## 安装
 
