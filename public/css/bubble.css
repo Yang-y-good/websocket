@@ -1,0 +1,58 @@
+/*气泡样式*/
+
+.bubble{
+    float: right;
+    margin-bottom: 15px;
+}
+li{
+    clear:both /*清除浮动*/
+}
+div{
+    clear:both  /*清除浮动*/
+}
+.arrow-right {
+    position: relative;
+    right: 0;
+    /* margin-top: 15px; */
+    display: inline-block;
+    font-size: 15px;
+    padding: 8px;
+    background-color: #F8C301;
+    border-radius: 5%;
+}
+
+.arrow-right::after {
+    content: "\25B6"; /*unicode编码信息*/
+    color: #F8C301;
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    right: -14px;
+}
+.name{
+    margin-left: 18px;
+}
+
+.arrow-left {
+    position: relative;
+    right: 0;
+    /* margin-top: 15px; */
+    margin-bottom: 15px;
+    display: inline-block;
+    font-size: 15px;
+    padding: 8px;
+    background-color: #FFFFFF;
+    border-radius: 5%;
+}
+
+.arrow-left::after {
+    content: "\25C0";
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    left: -15px;
+}
+.name-left{
+    margin-right: 18px;
+}

@@ -1,12 +1,18 @@
 const socket = io.connect();
-var messages = document.getElementById('messages');
+
+import {
+    getScrollBottom
+} from './scroll.js'
+import {debounce} from './debounce.js';
+
+var messages = document.querySelector('.main')
 let input = document.querySelector('.mesbox')
 let btn = document.querySelector('.btn-blue')
 let user = document.querySelector('.username')
 let loginOut = document.querySelector('.loginOut')
 console.log(input, btn)
 var username = sessionStorage.getItem('username')
-var room = document.querySelector('.room')
+// var room = document.querySelector('.room')
 var count = document.querySelector('.count')
 var inputChange = document.querySelector('.inputChange')
 var list = document.querySelector('.list')
@@ -23,19 +29,31 @@ user.innerHTML = username
 btn.addEventListener('click', function (e) {
     if (input.value) {
         console.log(input.value)
-        var mymessage = input.value + ':\t' + username
-        var othermessage = username + ':\t' + input.value
-        console.log(mymessage)
 
-        //在客户端显示自己发送的信息
-        var item = document.createElement('li')
-        item.className = 'my'
-        item.textContent = mymessage;
-        messages.append(item);
+        var othermessage = { //保存用户名和发送的信息
+            username: username,
+            content: input.value
+        }
+
+        console.log(othermessage)
+
+        // 在客户端显示自己发送的信息
+        var father = document.createElement('div')
+        var childContent = document.createElement('span')
+        var clildName = document.createElement('a')
+        father.className = 'bubble' //添加类名
+        childContent.className = 'arrow-right' //添加类名
+        clildName.className = 'name' //添加类名
+        childContent.textContent = input.value //添加用户输入的消息
+        clildName.textContent = username //添加用户姓名
+        father.appendChild(childContent)
+        father.appendChild(clildName)
+        messages.append(father)
+        messages.scrollTop = getScrollBottom(messages) //设置到滚动条最底部
 
         socket.emit('message', othermessage); //向服务端发送数据
 
-        input.value = ''
+        input.value = '' //发送信息后清除文本框内容
     } else {
         alert('请输入信息')
     }
@@ -55,47 +73,35 @@ socket.on('connect', () => {
     //向服务端发送加入的新用户
     socket.emit('newUser', username + '加入聊天室');
 
-
-    function debounce(fn, delay) {
-        var timer = null
-        return function (...args) {
-            if (timer) {
-                clearTimeout(timer)
-            }
-            timer = setTimeout(() => {
-                fn.apply(this, args)
-            }, delay)
-        }
-    }
     function handle(e) {
         if (e.target.value) {
-            socket.emit('inputChange',{
-                username : username,
-                isNot : true
+            socket.emit('inputChange', {
+                username: username,
+                isNot: true
             });
             setTimeout(() => {
-                socket.emit('inputChange',{
-                    username : username,
-                    isNot : false
+                socket.emit('inputChange', {
+                    username: username,
+                    isNot: false
                 });
             }, 3000);
         }
     }
 
     //监听文本框值的变化，实现用户正在输入功能
-    input.addEventListener('input',debounce(handle,500))
+    input.addEventListener('input', debounce(handle, 500))
 
 
 
-    socket.on('Changes',(msg) =>{
+    socket.on('Changes', (msg) => {
         inputChange.style.display = ''
-        if(msg.isNot){
+        if (msg.isNot) {
             inputChange.innerText = msg.username + '正在输入......'
-        }else{
+        } else {
             inputChange.style.display = 'none'
         }
         // inputChange.style.display = 'none'
-        
+
     })
 
 })
@@ -112,10 +118,18 @@ socket.on("users", function (obj) {
 
 //监听服务端发过来的信息事件
 socket.on('servermessage', function (msg) {
-    console.log('收到服务端发送的信息' + msg)
-    var item = document.createElement('li')
-    item.innerText = msg;
-    messages.append(item);
+    console.log('收到服务端发送的信息' + JSON.stringify(msg))
+    var content = JSON.parse(JSON.stringify(msg))
+    var father = document.createElement('div')
+    var childContent = document.createElement('span')
+    var clildName = document.createElement('a')
+    childContent.className = 'arrow-left' //添加类名
+    clildName.className = 'name-left' //添加类名
+    childContent.textContent = content.content //添加用户输入的消息
+    clildName.textContent = content.username //添加用户姓名
+    father.appendChild(clildName)
+    father.appendChild(childContent)
+    messages.append(father)
 })
 
 // 设置客户端退出

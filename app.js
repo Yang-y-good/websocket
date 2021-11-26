@@ -61,12 +61,11 @@ io.on('connection', (socket) => {
 
     //有新用户连接就推送所有在线用户
     socket.emit('newUsers', users)
-
+    console.log('有用户访问')
     //监听客户端登陆
     socket.on('login', (data) => {
         socket.username = data.username;
-        console.log(socket.username)
-
+        console.log(socket.username + '\t加入聊天室')
         //检测用户名是否重复
         if (users.indexOf(data.username) == -1) {
             users.push(data.username);
@@ -88,7 +87,7 @@ io.on('connection', (socket) => {
 
     //监听客户端发过来的信息
     socket.on('message', (msg) => {
-        console.log('收到客户端发送过来的信息 ： ' + msg)
+        console.log('收到客户端发送过来的信息 ： ' + JSON.parse(JSON.stringify(msg)))
         // io.emit('servermessage',msg)        //向所有客户端发送数据
         socket.broadcast.emit('servermessage', msg) //向除了自己以外的客户端发送信息
     })
@@ -104,7 +103,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', (msg) => {
         //客户端用户断开连接则删除用户
         users.remove(socket.username)
-
+        console.log(socket.username +'\t断开连接')
         //更新在线用户人数
         socket.broadcast.emit('users', users);
 
@@ -126,6 +125,6 @@ app.use((req, res, next) => { //设置请求404页面
 })
 
 // socket实例开启服务端
-httpServer.listen(port, () => {
+httpServer.listen(port, () => {http://localhost:8088/index
     console.log(`Example app listening at http://localhost:${port}`)
 })

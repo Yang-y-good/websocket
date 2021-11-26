@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="css/base.css"> -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bubble.css">
     <title>Document</title>
 
 </head>
@@ -30,11 +31,18 @@
           <span class="inputChange"> </span>
         </div>
       </div>
-      <div class="main">
+      <!-- <div class="main">
         <ul id="messages">
-    
         </ul>
-      </div>
+      </div> -->
+
+      <div class="main">
+        <!-- <div class="bubble">
+          <span class="arrow ">contentcontentcontent</span>
+          <a class="name">杨洋</a>
+        </div> -->
+    </div>
+
       <div class="footer">
         <input required name="text" class="mesbox" type="text" />
         <input class="btn-blue" type="button" value="发送" />
@@ -47,7 +55,8 @@
     <!-- 导入socket客户端 -->
     <script src="/socket.io/socket.io.js"></script>
 
-    <script src="js/index.js"></script>
+    <script src="js/index.js" type="module"></script>
+    <script src="js/scroll.js" type="module"></script>
 </body>
 
 </html>
