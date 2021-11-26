@@ -17,13 +17,13 @@ div{
     display: inline-block;
     font-size: 15px;
     padding: 8px;
-    background-color: #F8C301;
+    background-color: #12B7F5;
     border-radius: 5%;
 }
 
 .arrow-right::after {
     content: "\25B6"; /*unicode编码信息*/
-    color: #F8C301;
+    color: #12B7F5;
     font-size: 20px;
     position: absolute;
     top: 5px;
@@ -31,6 +31,7 @@ div{
 }
 .name{
     margin-left: 18px;
+    font-size: 15px;
 }
 
 .arrow-left {
@@ -41,13 +42,13 @@ div{
     display: inline-block;
     font-size: 15px;
     padding: 8px;
-    background-color: #FFFFFF;
+    background-color: #E3E3DD;
     border-radius: 5%;
 }
 
 .arrow-left::after {
     content: "\25C0";
-    color: #FFFFFF;
+    color: #E3E3DD;
     font-size: 20px;
     position: absolute;
     top: 5px;
@@ -55,4 +56,5 @@ div{
 }
 .name-left{
     margin-right: 18px;
+    font-size: 15px;
 }
